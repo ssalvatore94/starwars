@@ -11,6 +11,7 @@ import { FilmService } from './services/film.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ContentComponent } from './content/content.component';
 import { StarshipService } from './services/starship.service';
+import { StarshipComponent } from './content/starship/starship.component';
 
 
 
@@ -19,7 +20,8 @@ import { StarshipService } from './services/starship.service';
     AppComponent,
     NavbarComponent,
     SidebarComponent,
-    ContentComponent
+    ContentComponent,
+    StarshipComponent
   ],
   imports: [
     BrowserModule,
