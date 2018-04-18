@@ -9,7 +9,6 @@
 </div> -->
 <div *ngIf="myFilm">
     <h1>{{myFilm.title}}</h1>
-    <button (click)="findStarshipsOfFilm(myFilm.starships)">Carica Starships</button>
 </div>
 <div *ngFor="let starship of starships">
     {{starship.name}}

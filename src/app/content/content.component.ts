@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { FilmService } from "../services/film.service";
 import { StarshipService } from "../services/starship.service";
-import { Starship } from '../models/starship';
+import { Starship } from "../models/starship";
 import { Film } from "../models/film";
 
 @Component({
@@ -10,7 +10,7 @@ import { Film } from "../models/film";
   templateUrl: "./content.component.html",
   styleUrls: ["./content.component.css"]
 })
-export class ContentComponent implements OnInit {
+export class ContentComponent implements OnChanges {
   id: number;
   private sub: any;
   constructor(
@@ -20,10 +20,29 @@ export class ContentComponent implements OnInit {
   ) {}
   starships: Starship[];
   starship: Starship;
-
+  filmStarships: Starship[];
   @Input() myFilm: Film;
+  getMyFilm(){
+    console.log(this.myFilm);
+   ;
+    this.findStarshipsOfFilm(this.myFilm.starships as string[])
+  }
 
+
+ngOnChanges(changes: {[ propName: string]: SimpleChange}){
+  console.log('Change detected:');
+  console.log(this.myFilm)
+  if(this.myFilm!==undefined){
+    this.findStarshipsOfFilm(this.myFilm.starships)
+  }
+
+
+}
+
+
+  /*
   ngOnInit() {
+    this.getMyFilm();*/
     /*versione 1
     this.sub = this.route.params.subscribe(param => {
       this.id =+ param['id'];
@@ -67,7 +86,7 @@ export class ContentComponent implements OnInit {
 
       }
     });*/
-  }
+  // }
   /*
   loadStarship(){
     this.filmSrv.getFilm(this.id).subscribe(data=>
@@ -89,17 +108,14 @@ export class ContentComponent implements OnInit {
 
    }
   }*/
-  findStarshipsOfFilm(inputStarships:Starship[]){
-    this.starships=[];
+  findStarshipsOfFilm(inputStarships: string[]) {
+    this.starships = [];
     for (let i = 0; i < inputStarships.length; i++) {
       console.log(inputStarships[i]);
-      this.starshipSrv.getStarship(inputStarships[i])
-      .subscribe(sh => {console.log(sh);
+      this.starshipSrv.getStarship(inputStarships[i]).subscribe(sh => {
+        console.log(sh);
         this.starships.push(sh as Starship);
-    });
-
-
-  }
-
+      });
+    }
   }
 }
