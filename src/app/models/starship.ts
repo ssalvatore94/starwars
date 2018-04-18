@@ -1,20 +1,20 @@
 export class Starship{
-  MGTL:string;
+  name:string;
+  model:string;
+  manufacturer:string;
+  cost_in_credits:string;
+  length:string;
+  max_atmosphering_speed:string;
+  crew:string;
+  passengers:string;
   cargo_capacity:string;
   consumables:string;
-  cost_in_credits:string;
-  created:string;
-  crew:string;
-  edited:string;
-  hyperdrive:string;
-  length:string;
-  manufacturer:string;
-  max_atmosphering_speed:string;
-  model:string;
-  name:string;
-  passegers:string;
+  hyperdrive_rating:string;
+  MGTL:string;
+  starship_class:string;
   films:string[];
   pilots:string[];
-  starship_class:string;
+  created:string;
+  edited:string;
   url:string;
 }

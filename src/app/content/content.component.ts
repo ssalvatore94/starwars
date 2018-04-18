@@ -1,4 +1,10 @@
-import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  SimpleChange
+} from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { FilmService } from "../services/film.service";
 import { StarshipService } from "../services/starship.service";
@@ -22,28 +28,23 @@ export class ContentComponent implements OnChanges {
   starship: Starship;
   filmStarships: Starship[];
   @Input() myFilm: Film;
-  getMyFilm(){
+  getMyFilm() {
     console.log(this.myFilm);
-   ;
-    this.findStarshipsOfFilm(this.myFilm.starships as string[])
+    this.findStarshipsOfFilm(this.myFilm.starships as string[]);
   }
 
-
-ngOnChanges(changes: {[ propName: string]: SimpleChange}){
-  console.log('Change detected:');
-  console.log(this.myFilm)
-  if(this.myFilm!==undefined){
-    this.findStarshipsOfFilm(this.myFilm.starships)
+  ngOnChanges(changes: { [propName: string]: SimpleChange }) {
+    console.log("Change detected:");
+    console.log(this.myFilm);
+    if (this.myFilm !== undefined) {
+      this.findStarshipsOfFilm(this.myFilm.starships);
+    }
   }
-
-
-}
-
 
   /*
   ngOnInit() {
     this.getMyFilm();*/
-    /*versione 1
+  /*versione 1
     this.sub = this.route.params.subscribe(param => {
       this.id =+ param['id'];
      console.log('parametro ricevuto '+ this.id);
@@ -60,15 +61,15 @@ ngOnChanges(changes: {[ propName: string]: SimpleChange}){
         })
       }
     })*/
-    //this.id = this.route.params['id']
-    /* vedere quando cambia l id
+  //this.id = this.route.params['id']
+  /* vedere quando cambia l id
     this.sub = this.route.params.subscribe(param => {
       this.id =+ param['id'];
      console.log('parametro ricevuto '+ this.id);
       this.loadStarship()
     });*/
-    /*metodo funzionante*/
-    /*
+  /*metodo funzionante*/
+  /*
     this.filmSrv.getFilm(this.id).subscribe(data=>
       {console.log('content log di film ');
       console.log(data.starships);
