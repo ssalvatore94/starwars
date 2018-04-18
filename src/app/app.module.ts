@@ -1,3 +1,4 @@
+import {FormsModule} from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -23,7 +24,8 @@ import { StarshipService } from './services/starship.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [FilmService, StarshipService],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FilmService } from '../services/film.service';
 import { Film } from '../models/film';
 import { Router } from '@angular/router';
@@ -12,13 +12,14 @@ export class SidebarComponent implements OnInit {
 
   constructor(private filmSrv:FilmService, private router:Router) { }
   films:Film[]=[]
+  selectedFilm: Film;
   ngOnInit() {
     this.filmSrv.getAllFilm().subscribe(data=>{
       console.log(data.results);
 
       this.films=data.results as Film[]})
 
-  }
+  }/*
   readMe(id_episode){
     console.log(id_episode);
     var id:number;
@@ -46,6 +47,14 @@ export class SidebarComponent implements OnInit {
     console.log('id: '+id);
     //this.filmSrv.selectedFilm= id;
     this.router.navigate(['starship',id])
+
+  }*/
+  selectFilm(film:Film){
+    console.log('cliccato');
+    console.log(film)
+
+    this.selectedFilm = film;
+    console.log(this.selectedFilm);
 
   }
 

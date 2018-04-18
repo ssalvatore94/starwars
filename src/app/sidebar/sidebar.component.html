@@ -1,3 +1,4 @@
 <ul>
-    <li *ngFor="let film of films; index as i" (click)="readMe(film.episode_id)">{{film.title}}</li>
+    <li *ngFor="let film of films; index as i" (click)="selectFilm(film)">{{film.title}}</li>
 </ul>
+<app-content [myFilm]="selectedFilm"></app-content>
