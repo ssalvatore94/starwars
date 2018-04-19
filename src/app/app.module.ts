@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ContentComponent } from './content/content.component';
 import { StarshipService } from './services/starship.service';
 import { StarshipComponent } from './content/starship/starship.component';
+import { FilterPipe } from './filter/filter.pipe';
+
 
 
 
@@ -21,7 +23,10 @@ import { StarshipComponent } from './content/starship/starship.component';
     NavbarComponent,
     SidebarComponent,
     ContentComponent,
-    StarshipComponent
+    StarshipComponent,
+    FilterPipe
+
+    
   ],
   imports: [
     BrowserModule,

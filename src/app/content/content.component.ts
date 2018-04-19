@@ -10,24 +10,30 @@ import { FilmService } from "../services/film.service";
 import { StarshipService } from "../services/starship.service";
 import { Starship } from "../models/starship";
 import { Film } from "../models/film";
+import { FilterPipe } from "../filter/filter.pipe";
+
 
 @Component({
   selector: "app-content",
   templateUrl: "./content.component.html",
-  styleUrls: ["./content.component.css"]
+  styleUrls: ["./content.component.css"],
+
 })
 export class ContentComponent implements OnChanges {
+ 
+  @Input() myFilm: Film;
+  
   id: number;
   private sub: any;
+  starships: Starship[];
+  starship: Starship;
+  filmStarships: Starship[];
   constructor(
     private route: ActivatedRoute,
     private filmSrv: FilmService,
     private starshipSrv: StarshipService
-  ) {}
-  starships: Starship[];
-  starship: Starship;
-  filmStarships: Starship[];
-  @Input() myFilm: Film;
+  ) { }
+ 
   getMyFilm() {
     console.log(this.myFilm);
     this.findStarshipsOfFilm(this.myFilm.starships as string[]);
@@ -40,6 +46,17 @@ export class ContentComponent implements OnChanges {
       this.findStarshipsOfFilm(this.myFilm.starships);
     }
   }
+  findStarshipsOfFilm(inputStarships: string[]) {
+    this.starships = [];
+    for (let i = 0; i < inputStarships.length; i++) {
+      console.log(inputStarships[i]);
+      this.starshipSrv.getStarship(inputStarships[i]).subscribe(sh => {
+        console.log(sh);
+        this.starships.push(sh as Starship);
+      });
+    }
+  }
+
 
   /*
   ngOnInit() {
@@ -109,14 +126,6 @@ export class ContentComponent implements OnChanges {
 
    }
   }*/
-  findStarshipsOfFilm(inputStarships: string[]) {
-    this.starships = [];
-    for (let i = 0; i < inputStarships.length; i++) {
-      console.log(inputStarships[i]);
-      this.starshipSrv.getStarship(inputStarships[i]).subscribe(sh => {
-        console.log(sh);
-        this.starships.push(sh as Starship);
-      });
-    }
-  }
+
+
 }
