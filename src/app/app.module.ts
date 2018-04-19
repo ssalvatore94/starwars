@@ -14,9 +14,6 @@ import { StarshipService } from './services/starship.service';
 import { StarshipComponent } from './content/starship/starship.component';
 import { FilterPipe } from './filter/filter.pipe';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,11 +21,10 @@ import { FilterPipe } from './filter/filter.pipe';
     SidebarComponent,
     ContentComponent,
     StarshipComponent,
-    FilterPipe
-
-    
+    FilterPipe    
   ],
   imports: [
+  
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
