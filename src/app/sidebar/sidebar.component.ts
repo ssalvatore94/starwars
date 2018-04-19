@@ -13,13 +13,20 @@ export class SidebarComponent implements OnInit {
   constructor(private filmSrv:FilmService, private router:Router) { }
   films:Film[]=[]
   selectedFilm: Film;
+  searchTerm:string;
+  
+
   ngOnInit() {
     this.filmSrv.getAllFilm().subscribe(data=>{
       console.log(data.results);
-
+      
+      
       this.films=data.results as Film[]})
 
-  }/*
+  }
+  
+  
+  /*
   readMe(id_episode){
     console.log(id_episode);
     var id:number;

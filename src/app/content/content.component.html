@@ -1,10 +1,9 @@
-<div *ngIf="myFilm">
+<app-navbar (search)="searchName($event)" ></app-navbar>
+<div *ngIf="myFilm" >
     <h1>{{myFilm.title}}</h1>
+    <div *ngFor="let starship of starships| filter: searchTerm">
+        <app-starship [starship]="starship"></app-starship>
+    </div>
 </div>
-<form>
-    <label for="pippo">Search For Name</label> <input type="text" [(ngModel)]="term" name="pippo">
-</form>
 
-<div *ngFor="let starship of starships| filter: term ">
-    <app-starship [starship]="starship"></app-starship>
-</div>
+

@@ -22,24 +22,32 @@ import { FilterPipe } from "../filter/filter.pipe";
 export class ContentComponent implements OnChanges {
  
   @Input() myFilm: Film;
-  
+  //@Input() searchTerm:string;
   id: number;
   private sub: any;
   starships: Starship[];
   starship: Starship;
   filmStarships: Starship[];
+  
+  searchTerm:string;
+  searchName(searchTerm){
+    console.log('searchName : '+searchTerm );    
+    this.searchTerm=searchTerm;
+  }
+
+
   constructor(
     private route: ActivatedRoute,
     private filmSrv: FilmService,
     private starshipSrv: StarshipService
   ) { }
- 
   getMyFilm() {
     console.log(this.myFilm);
     this.findStarshipsOfFilm(this.myFilm.starships as string[]);
   }
 
   ngOnChanges(changes: { [propName: string]: SimpleChange }) {
+
     console.log("Change detected:");
     console.log(this.myFilm);
     if (this.myFilm !== undefined) {

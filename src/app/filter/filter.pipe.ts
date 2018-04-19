@@ -7,11 +7,12 @@ import { Starship } from '../models/starship';
 export class FilterPipe implements PipeTransform {
 
   transform(starships: Starship[], term: any): any {
-    if (term ===undefined){
+    if (term ===undefined || term === ""){
       return starships;
     }
     return starships.filter((data)=>{
       var starship = data as Starship
+      console.log(data)
       return starship.name.toLocaleLowerCase().includes(term.toLocaleLowerCase())
     }
   )
