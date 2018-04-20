@@ -3,3 +3,8 @@
     color: red;
     background-color: white;
 }
+.top-spacing{
+    float: left;
+    margin-top: 7%;
+
+}

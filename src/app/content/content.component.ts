@@ -20,20 +20,16 @@ import { FilterPipe } from "../filter/filter.pipe";
 
 })
 export class ContentComponent implements OnChanges {
- 
   @Input() myFilm: Film;
   //@Input() searchTerm:string;
   id: number;
   private sub: any;
   starships: Starship[];
   starship: Starship;
-  filmStarships: Starship[];
-  
-  searchTerm:string;
-  searchName(searchTerm){
-    console.log('searchName : '+searchTerm );    
-    this.searchTerm=searchTerm;
-  }
+
+  @Input() getTermFromMain:string;
+  termForFilter:string;
+ 
 
 
   constructor(
@@ -41,10 +37,6 @@ export class ContentComponent implements OnChanges {
     private filmSrv: FilmService,
     private starshipSrv: StarshipService
   ) { }
-  getMyFilm() {
-    console.log(this.myFilm);
-    this.findStarshipsOfFilm(this.myFilm.starships as string[]);
-  }
 
   ngOnChanges(changes: { [propName: string]: SimpleChange }) {
 
@@ -54,6 +46,12 @@ export class ContentComponent implements OnChanges {
       this.findStarshipsOfFilm(this.myFilm.starships);
     }
   }
+
+  getMyFilm() {
+    console.log('lettura film da getmyfilm() '+this.myFilm);
+    this.findStarshipsOfFilm(this.myFilm.starships as string[]);
+  }
+
   findStarshipsOfFilm(inputStarships: string[]) {
     this.starships = [];
     for (let i = 0; i < inputStarships.length; i++) {
@@ -64,76 +62,4 @@ export class ContentComponent implements OnChanges {
       });
     }
   }
-
-
-  /*
-  ngOnInit() {
-    this.getMyFilm();*/
-  /*versione 1
-    this.sub = this.route.params.subscribe(param => {
-      this.id =+ param['id'];
-     console.log('parametro ricevuto '+ this.id);
-    })
-    this.filmSrv.getFilm(this.id).subscribe(data=>
-      {console.log('content log di film ');
-      console.log(data.starships);
-      console.log(data.starships.length);
-      for (let i = 0; i < data.starships.length; i++) {
-        console.log(data.starships[i]);
-        this.starshipSrv.getStarship(data.starships[i])
-        .subscribe(dato => {console.log(dato);
-          this.staships = dato as Starship[];
-        })
-      }
-    })*/
-  //this.id = this.route.params['id']
-  /* vedere quando cambia l id
-    this.sub = this.route.params.subscribe(param => {
-      this.id =+ param['id'];
-     console.log('parametro ricevuto '+ this.id);
-      this.loadStarship()
-    });*/
-  /*metodo funzionante*/
-  /*
-    this.filmSrv.getFilm(this.id).subscribe(data=>
-      {console.log('content log di film ');
-      console.log(data.starships);
-      console.log(data.starships.length);
-      this.starships=[];
-      for (let i = 0; i < data.starships.length; i++) {
-        console.log(data.starships[i]);
-        this.starshipSrv.getStarship(data.starships[i])
-        .subscribe(sh => {console.log(sh);
-          this.starships.push(sh as Starship);
-      });
-      console.log('leggo array');
-
-      console.log(this.starships)
-
-      }
-    });*/
-  // }
-  /*
-  loadStarship(){
-    this.filmSrv.getFilm(this.id).subscribe(data=>
-      {console.log('content log di film ');
-      console.log(data.starships);
-      console.log(data.starships.length);
-      this.starships=[];
-      for (let i = 0; i < data.starships.length; i++) {
-        console.log(data.starships[i]);
-        this.starshipSrv.getStarship(data.starships[i])
-        .subscribe(sh => {console.log(sh);
-          this.starships.push(sh as Starship);
-      });
-      console.log('leggo array');
-
-      console.log(this.starships)
-
-      }
-
-   }
-  }*/
-
-
 }

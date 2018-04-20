@@ -7,7 +7,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   @Output() search=new EventEmitter();
-  private searchTerm:string;
   constructor() { }
 
   ngOnInit() {

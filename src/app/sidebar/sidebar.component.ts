@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FilmService } from '../services/film.service';
 import { Film } from '../models/film';
 import { Router } from '@angular/router';
@@ -10,59 +10,22 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private filmSrv:FilmService, private router:Router) { }
-  films:Film[]=[]
-  selectedFilm: Film;
-  searchTerm:string;
-  
+  constructor(private filmSrv: FilmService) { }
+  films: Film[] = []
+
+  @Output() selectFilm = new EventEmitter<Film>();
+
 
   ngOnInit() {
-    this.filmSrv.getAllFilm().subscribe(data=>{
-      console.log(data['results']);
-      
-      
-      this.films=data['results'] as Film[]})
+    this.filmSrv.getAllFilm().subscribe(data => {
+      console.log('Data:' + data['results']);
+      this.films = data['results'] as Film[]
+    })
 
   }
-  
-  
-  /*
-  readMe(id_episode){
-    console.log(id_episode);
-    var id:number;
-    if(id_episode==1){
-      id=4
-    }
-    if(id_episode==2){
-      id=5
-    }
-    if(id_episode==3){
-      id=6
-    }
-    if(id_episode==4){
-      id=1
-    }
-    if(id_episode==5){
-      id=2
-    }
-    if(id_episode==6){
-      id=3
-    }
-    if(id_episode==7){
-      id=7
-    }
-    console.log('id: '+id);
-    //this.filmSrv.selectedFilm= id;
-    this.router.navigate(['starship',id])
 
-  }*/
-  selectFilm(film:Film){
-    console.log('cliccato');
-    console.log(film)
-
-    this.selectedFilm = film;
-    console.log(this.selectedFilm);
-
+  onFilmSelect(film) {
+    this.selectFilm.emit(film);
   }
 
 }

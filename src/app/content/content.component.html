@@ -1,14 +1,14 @@
-<app-navbar (search)="searchName($event)"></app-navbar>
 <div *ngIf="myFilm" class="row content container col-md-12">
     <div class="row col-md-12">
         <h1>{{myFilm.title}}</h1>
     </div>
     <div class="row col-md-12 card-group">
-        <div *ngFor="let starship of starships| filter: searchTerm">
+        <div *ngFor="let starship of starships| filter: getTermFromMain">
             <div class="float-left">
-            <div class="card">
-                <app-starship [starship]="starship"></app-starship>
+                <div class="card">
+                    <app-starship [starship]="starship"></app-starship>
+                </div>
             </div>
         </div>
     </div>
-    </div>
+</div>
