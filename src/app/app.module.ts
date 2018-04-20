@@ -21,10 +21,9 @@ import { FilterPipe } from './filter/filter.pipe';
     SidebarComponent,
     ContentComponent,
     StarshipComponent,
-    FilterPipe    
+    FilterPipe
   ],
   imports: [
-  
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

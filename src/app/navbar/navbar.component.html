@@ -1,3 +1,7 @@
-<div class="navbar navbar-light bg-light">
-  Cerca<input type="text" #searchTerm (keyup)='searchEmit(searchTerm.value)' >
+<div class="navbar navbar-light bg-light header-nav fixed-top row position-fixed">
+  <div class="col-md-9"></div>
+  <div class="col-md-3 float-right form-inline">
+   <label for="searchTerm">Cerca:  </label> 
+    <input type="text" #searchTerm (keyup)='searchEmit(searchTerm.value)' class="form-control">
+  </div>
 </div>
