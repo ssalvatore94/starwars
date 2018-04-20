@@ -1,0 +1,21 @@
+import { Component, OnInit } from '@angular/core';
+import { Film } from '../../models/film';
+
+@Component({
+  selector: 'app-main-content',
+  templateUrl: './main-content.component.html',
+  styleUrls: ['./main-content.component.css']
+})
+export class MainContentComponent implements OnInit {
+
+  selectedFilm: Film;
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  onFilmSelect(film:Film){
+    this.selectedFilm = film;
+  }
+
+}
