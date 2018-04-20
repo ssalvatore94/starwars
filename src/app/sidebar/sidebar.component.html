@@ -1,8 +1,8 @@
 
 <div class="row col-md-12 top-spacing">
-        <div class="col-md-3">
-                <ul>
-                    <li *ngFor="let film of films; index as i" (click)="selectFilm(film)">{{film.title}}</li>
+        <div class="col-md-3 ">
+                <ul class="list-group"> 
+                    <li *ngFor="let film of films; index as i" (click)="selectFilm(film)" class="list-group-item list-group-item-action">{{film.title}}</li>
                 </ul>
             </div>
             <div class="col-md-8">
