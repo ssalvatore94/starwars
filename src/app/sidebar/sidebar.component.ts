@@ -18,10 +18,10 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     this.filmSrv.getAllFilm().subscribe(data=>{
-      console.log(data.results);
+      console.log(data['results']);
       
       
-      this.films=data.results as Film[]})
+      this.films=data['results'] as Film[]})
 
   }
   
