@@ -29,7 +29,9 @@ export class ContentComponent implements OnChanges {
 
   @Input() getTermFromMain:string;
   termForFilter:string;
- 
+  getTerm(term){
+    this.termForFilter = term;
+  }
 
 
   constructor(
