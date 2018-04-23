@@ -18,6 +18,9 @@ import { PlanetComponent } from './content/planet/planet.component';
 import { CharacterComponent } from './content/character/character.component';
 import { PlanetService } from './services/planet.service';
 import { CharacterService } from './services/character.service';
+import { StrashipPipe } from './filter/straship.pipe';
+import { CharacterPipe } from './filter/character.pipe';
+import { PlanetPipe } from './filter/planet.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { CharacterService } from './services/character.service';
     FilterPipe,
     MainContentComponent,
     PlanetComponent,
-    CharacterComponent
+    CharacterComponent,
+    StrashipPipe,
+    CharacterPipe,
+    PlanetPipe
   ],
   imports: [
     BrowserModule,

@@ -50,16 +50,13 @@ export class ContentComponent implements OnChanges {
   ) { }
 
   ngOnChanges(changes: { [propName: string]: SimpleChange }) {
-    this.star = false;
-    this.pla = false;
-    this.cha =false;
+    this.resetSearchTerm()
+    this.loadStarships();
     console.log("Change detected:");
     console.log(this.myFilm);
-    // if (this.myFilm !== undefined) {
-    //   this.findStarshipsOfFilm(this.myFilm.starships);
-    // }
   }
   loadStarships() {
+    this.resetSearchTerm()
     this.star = true;
     this.cha= false;
     this.pla=false;
@@ -83,6 +80,7 @@ export class ContentComponent implements OnChanges {
   }
 
   loadPlanet() {
+    this.resetSearchTerm()
     this.star = false;
     this.pla=true;
     this.cha = false;
@@ -103,6 +101,7 @@ export class ContentComponent implements OnChanges {
   }
 
   loadCharacter() {
+    this.resetSearchTerm();
     this.star = false;
     this.pla=false;
     this.cha = true;
@@ -115,6 +114,9 @@ export class ContentComponent implements OnChanges {
       this.characters.push(data as Character))
       
     }
+  }
+  resetSearchTerm(){
+    this.termForFilter = '';
   }
 
 
