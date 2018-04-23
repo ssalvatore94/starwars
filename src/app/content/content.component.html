@@ -1,13 +1,42 @@
 <app-navbar (search)="getTerm($event)"></app-navbar>
-<div *ngIf="myFilm" class="row content container col-md-12">
-    <div class="row col-md-12">
-        <h1>{{myFilm.title}}</h1>
-    </div>
+<div class="btn-group inline"> 
+    <button (click)="loadStarships()" class="btn btn-info">Navicelle</button>
+    <button (click)="loadPlanet()" class="btn-success btn ">Pianeti</button>
+    <button (click)="loadCharacter()" class="btn btn-danger">Personaggi</button>
+</div>
+
+<div *ngIf="myFilm" class="row col-md-12">
+    <h1>{{myFilm.title}}</h1>
+</div>
+<div *ngIf="!myFilm">
+    <h1>Selezionare un film</h1>
+</div>
+
+<div *ngIf="star" class="row">
     <div class="row container-fluid">
         <div class="card-group ">
             <div *ngFor="let starship of starships| filter: termForFilter">
-                <app-starship [starship]="starship"></app-starship>
+                <app-starship [starship]="starship" class="col-md-3 offset-1"></app-starship>
             </div>
         </div>
     </div>
 </div>
+<div *ngIf="pla" class="row">
+    <div class="row container-fluid">
+        <div class="card-group ">
+            <div *ngFor="let planet of planets">
+                <app-planet [planet]="planet" class="col-md-3 offset-1"></app-planet>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="cha" class="row">
+    <div class="row container-fluid">
+        <div class="card-group ">
+            <div *ngFor="let character of characters">
+                <app-character [character]="character" class="col-md-3 offset-1"></app-character>
+            </div>
+        </div>
+    </div>
+</div>
+

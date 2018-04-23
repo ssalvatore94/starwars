@@ -15,6 +15,4 @@ export class Character {
     created:string;
     edited:string;
     url:string;
-
-
 }

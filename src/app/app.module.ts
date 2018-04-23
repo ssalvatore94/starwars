@@ -14,6 +14,10 @@ import { StarshipService } from './services/starship.service';
 import { StarshipComponent } from './content/starship/starship.component';
 import { FilterPipe } from './filter/filter.pipe';
 import { MainContentComponent } from './main-content/main-content.component';
+import { PlanetComponent } from './content/planet/planet.component';
+import { CharacterComponent } from './content/character/character.component';
+import { PlanetService } from './services/planet.service';
+import { CharacterService } from './services/character.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,9 @@ import { MainContentComponent } from './main-content/main-content.component';
     ContentComponent,
     StarshipComponent,
     FilterPipe,
-    MainContentComponent
+    MainContentComponent,
+    PlanetComponent,
+    CharacterComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,7 @@ import { MainContentComponent } from './main-content/main-content.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [FilmService, StarshipService],
+  providers: [FilmService, StarshipService,PlanetService, CharacterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

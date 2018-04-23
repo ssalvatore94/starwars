@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Starship } from '../../models/starship';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -11,9 +12,10 @@ import { Starship } from '../../models/starship';
 export class StarshipComponent implements OnInit {
   @Input() starship:Starship
 
-  constructor() { }
+  constructor(private router: ActivatedRoute) { }
 
   ngOnInit() {
+
   }
 
 }
