@@ -13,29 +13,35 @@
 </div>
 
 <div *ngIf="star" class="row card-deck">
-    <div class="row container-fluid">
-        <div class="card-group ">
-            <div *ngFor="let starship of starships| starshipFilter:termForFilter">
-                <app-starship [starship]="starship" class="col-md-3 "></app-starship>
-            </div>
+    <div class="row container">
+        <div class="col-md-4 py-1" *ngFor="let starship of starships| starshipFilter:termForFilter">
+            <app-starship [starship]="starship"></app-starship>
         </div>
     </div>
 </div>
 <div *ngIf="pla" class="row card-deck">
-    <div class="row container-fluid">
-        <div class="card-group ">
-            <div *ngFor="let planet of planets | planetFilter:termForFilter">
-                <app-planet [planet]="planet" class="col-md-3 "></app-planet>
-            </div>
+    <div class="row container">
+        <div *ngFor="let planet of planets | planetFilter:termForFilter" class="col-md-4 py-1">
+            <app-planet [planet]="planet"></app-planet>
         </div>
     </div>
 </div>
 <div *ngIf="cha" class="row card-deck">
-    <div class="row container-fluid">
-        <div class="card-group ">
-            <div *ngFor="let character of characters | characterFilter:termForFilter">
-                <app-character [character]="character" class="col-sm-4 py-2 card-set"></app-character>
-            </div>
+    <div class="row container">
+        <div *ngFor="let character of characters | characterFilter:termForFilter" class="col-sm-4 py-1">
+            <app-character [character]="character" ></app-character>
         </div>
     </div>
 </div>
+<!-- <div class="container">
+    <div class="row">
+        <div class="card-group">
+
+            <div *ngFor="let starship of starships| starshipFilter:termForFilter">
+                
+                    <app-starship [starship]="starship"></app-starship>
+                
+            </div>
+        </div>
+    </div>
+</div> -->

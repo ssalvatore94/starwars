@@ -118,6 +118,4 @@ export class ContentComponent implements OnChanges {
   resetSearchTerm(){
     this.termForFilter = '';
   }
-
-
 }
